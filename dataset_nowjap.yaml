@@ -1,0 +1,10 @@
+# directory of train and val datasets
+train: ../data_copy/images/train/
+val: ../data_copy/images/valid/
+
+nc: 4
+names: ['D00','D10','D20','D40']
+
+#!python train.py --img 640 --batch 10 --epochs 10 --data dataset.yaml --cfg yolov5s.yaml --weights ./best.pt --device -1
+
+#$ python -m torch.distributed.run --nproc_per_node 2  train.py --img 640 --batch 10 --epochs 10 --data dataset.yaml --cfg yolov5s.yaml --weights best.pt --device 0,1
